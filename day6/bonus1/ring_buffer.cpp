@@ -1,4 +1,6 @@
 #include "ring_buffer.h"
+#include <limits>
+
 
 ring_buffer::~ring_buffer() { delete this->data; };
 
@@ -15,29 +17,30 @@ void ring_buffer::Write(const int &val)
 {
     if (this->tail == this->end_of_data)
     {
-        this->tail = this->start_of_data;
         *(this->tail) = val;
-        this->tail = (this->tail + 1);
+        this->tail = this->start_of_data;
     }
     else
     {
-        std::cout << "Writing " << val << " to " << this->tail << std::endl;
         *(this->tail) = val;
         this->tail = (this->tail + 1);
     }
-    // Ska man kunna skriva när man gått ikapp read pointer?
 }
 
 int ring_buffer::Read()
 {
     int val;
-    //std::cout << "Read head: " << this->head << " tail: " << this->tail << "\n";
-    if (this->head == this->tail)
+    if (this->head == this->tail){
         std::cout << "No data to read\n";
+        val=std::numeric_limits<int>::max();
+    }
     else
-    {
+    {   
         val = *(this->head);
-        (this->head)++;
+        if(this->head==this->end_of_data)
+            this->head=this->start_of_data;
+        else              
+            (this->head)++;
     }
     return val;
 }

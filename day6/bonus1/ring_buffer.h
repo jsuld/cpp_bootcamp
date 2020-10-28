@@ -1,3 +1,6 @@
+#ifndef RING_BUFFER_H
+#define RING_BUFFER_H
+
 #include <iostream>
 
 class ring_buffer{
@@ -13,3 +16,5 @@ class ring_buffer{
     int *end_of_data;
     int *start_of_data;
 };
+
+#endif //RING_BUFFER_H

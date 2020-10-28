@@ -5,7 +5,7 @@ INCLUDE_PATH = include
 SRC_PATH = src
 
 all: main.o libshapes.so
-	$(CXX) main.o -L$(LIB_PATH) -lshapes -o $(NAME)
+	$(CXX) main.o -L$(LIB_PATH) -lshapes -o $(NAME) -I $(INCLUDE_PATH)
 
 main.o: libshapes.so
 	$(CXX) -c $(SRC_PATH)/main.cpp -o main.o -I $(INCLUDE_PATH)
