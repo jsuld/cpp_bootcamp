@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.5.1)
+project(bonus)
+include_directories(/usr/include/pcap)
+#link_libraries(libpcap0.8-dev)
+add_executable(exec bonus.cpp)
