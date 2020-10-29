@@ -35,6 +35,7 @@ void resizeForMe(char *a, size_t _newSize) {
 int main() {
     printArray(fillArray());
     printBool(false);
+    
     char *a = new char[SIZE];
 
     for (size_t i = 0; i<SIZE; i++) i%2 ? a[i] = 'A' : a[i] = 'D'; 
@@ -43,5 +44,8 @@ int main() {
     resizeForMe(a,100);
     for (size_t i = 0; i<1000; i++) i%2 ? a[i] = 'B' : a[i] = 'C';
     std::cout << "Size is: " << a << std::endl;
+
+    delete [] a;
+
     return 0;
 }
